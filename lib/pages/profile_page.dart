@@ -1,6 +1,8 @@
+import 'package:calcal/pages/edit_profile_page.dart';
 import 'package:calcal/reuse.dart';
 import 'package:calcal/values.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class profile_page extends StatelessWidget {
   const profile_page({super.key});
@@ -11,6 +13,7 @@ class profile_page extends StatelessWidget {
       child: Stack(
         children: [
           backgroundImg(),
+          //----ตั้งแต่ส่วนนี้น่าจะ Refactor ได้??----
           Container(
             padding: const EdgeInsets.all(30),
             child: Column(
@@ -89,7 +92,11 @@ class profile_page extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.to(
+                        const edit_profile_page(),
+                      );
+                    },
                     child: Text(
                       'แก้ไขข้อมูล',
                       style: TextStyle(

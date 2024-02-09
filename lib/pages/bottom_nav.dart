@@ -1,4 +1,6 @@
+import 'package:calcal/pages/advice_page.dart';
 import 'package:calcal/pages/home_page.dart';
+import 'package:calcal/pages/menu_page.dart';
 import 'package:calcal/pages/profile_page.dart';
 import 'package:calcal/states/mainpage_state.dart';
 import 'package:calcal/values.dart';
@@ -8,6 +10,8 @@ import 'package:get/get.dart';
 class bottom_nav extends StatelessWidget {
   final List<Widget> screens = [
     const home_page(),
+    const menu_page(),
+    const advice_page(),
     const profile_page(),
   ];
   bottom_nav({super.key});
@@ -33,8 +37,16 @@ class bottom_nav extends StatelessWidget {
           selectedItemColor: Theme.of(context).colorScheme.primary,
           items: const [
             BottomNavigationBarItem(
-              icon: Icon(Icons.microwave),
+              icon: Icon(Icons.home),
               label: 'HOME',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.microwave),
+              label: 'MENU',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.sports_tennis),
+              label: 'ADVICE',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person),
