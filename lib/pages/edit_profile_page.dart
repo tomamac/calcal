@@ -1,6 +1,7 @@
 import 'package:calcal/reuse.dart';
-import 'package:calcal/values.dart';
+import 'package:calcal/states/editprofile_state.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class edit_profile_page extends StatelessWidget {
   const edit_profile_page({super.key});
@@ -10,6 +11,7 @@ class edit_profile_page extends StatelessWidget {
 //--reference https://stackoverflow.com/questions/58678614/material-app-styles-doesnt-work-without-scaffold
   @override
   Widget build(BuildContext context) {
+    final _state = Get.put(editprofileState());
     return Scaffold(
       body: SafeArea(
         child: Stack(
@@ -37,36 +39,56 @@ class edit_profile_page extends StatelessWidget {
                         hintText: 'อายุ',
                       ),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        SizedBox(
-                          height: 100,
-                          width: 100,
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
+                    Obx(
+                      () => Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          SizedBox(
+                            height: 100,
+                            width: 100,
+                            child: IconButton(
+                              disabledColor: Colors.white,
+                              color: Colors.grey[350],
+                              iconSize: 75,
+                              onPressed: _state.radioInd.value == 0
+                                  ? null
+                                  : ({index = 0}) {
+                                      _state.setRadioIndex(index);
+                                    },
+                              icon: const Icon(Icons.man),
+                              style: IconButton.styleFrom(
+                                disabledBackgroundColor: Colors.blue[200],
+                                backgroundColor: Colors.grey,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
                               ),
                             ),
-                            onPressed: () {},
-                            child: const Text('Male'),
                           ),
-                        ),
-                        SizedBox(
-                          height: 100,
-                          width: 100,
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
+                          SizedBox(
+                            height: 100,
+                            width: 100,
+                            child: IconButton(
+                              disabledColor: Colors.white,
+                              color: Colors.grey[350],
+                              iconSize: 75,
+                              onPressed: _state.radioInd.value == 1
+                                  ? null
+                                  : ({index = 1}) {
+                                      _state.setRadioIndex(index);
+                                    },
+                              icon: const Icon(Icons.woman),
+                              style: IconButton.styleFrom(
+                                disabledBackgroundColor: Colors.pink[200],
+                                backgroundColor: Colors.grey,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
                               ),
                             ),
-                            onPressed: () {},
-                            child: const Text('Female'),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                     SizedBox(
                       width: double.infinity,
@@ -76,7 +98,9 @@ class edit_profile_page extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10),
                           ),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.back();
+                        },
                         child: const Text('บันทึก'),
                       ),
                     ),
