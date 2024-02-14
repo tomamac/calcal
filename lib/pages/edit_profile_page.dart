@@ -1,6 +1,10 @@
+import 'package:calcal/models/profile_model.dart';
 import 'package:calcal/reuse.dart';
+import 'package:calcal/sharedprefs.dart';
 import 'package:calcal/states/editprofile_state.dart';
+import 'package:calcal/states/profilepage_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 class edit_profile_page extends StatelessWidget {
@@ -12,6 +16,7 @@ class edit_profile_page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _state = Get.put(editprofileState());
+    final _profilestate = Get.put(profilepageState());
     return Scaffold(
       body: SafeArea(
         child: Stack(
@@ -25,18 +30,30 @@ class edit_profile_page extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     TextFormField(
+                      controller: _state.weight,
+                      keyboardType: TextInputType.number,
+                      inputFormatters: [
+                        FilteringTextInputFormatter.allow(
+                            RegExp(r'^\d*\.?\d{0,2}')),
+                      ],
                       decoration: const InputDecoration(
-                        hintText: 'น้ำหนัก',
+                        hintText: 'น้ำหนัก (กก.)',
                       ),
                     ),
                     TextFormField(
+                      controller: _state.height,
+                      keyboardType: TextInputType.number,
+                      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                       decoration: const InputDecoration(
-                        hintText: 'ส่วนสูง',
+                        hintText: 'ส่วนสูง (ซม.)',
                       ),
                     ),
                     TextFormField(
+                      controller: _state.age,
+                      keyboardType: TextInputType.number,
+                      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                       decoration: const InputDecoration(
-                        hintText: 'อายุ',
+                        hintText: 'อายุ (ปี)',
                       ),
                     ),
                     Obx(
@@ -99,9 +116,33 @@ class edit_profile_page extends StatelessWidget {
                           ),
                         ),
                         onPressed: () {
+                          var weight = double.parse(_state.weight.text);
+                          var height = int.parse(_state.height.text);
+                          var age = int.parse(_state.age.text);
+                          var bmi = weight / ((height / 100) * (height / 100));
+                          final profile = profileModel(
+                            weight: weight,
+                            height: height,
+                            age: age,
+                            sex: _state.radioInd.value,
+                            bmi: double.parse(bmi.toStringAsFixed(2)),
+                          );
+                          _profilestate.updateData(profile);
+                          sharedprefs.instance.addToSF(profile);
+
                           Get.back();
                         },
                         child: const Text('บันทึก'),
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Get.back();
+                      },
+                      child: const Text(
+                        'ยกเลิก',
+                        style: TextStyle(
+                            color: Colors.red, fontWeight: FontWeight.bold),
                       ),
                     ),
                   ],
