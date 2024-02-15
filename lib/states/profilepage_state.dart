@@ -18,7 +18,4 @@ class profilepageState extends GetxController {
     sex.value = profile.sex == 0 ? "ชาย" : "หญิง";
     bmi.value = profile.bmi;
   }
-  //----TO BE ADDED----
-
-  //----ฟังก์ชั่นการคำนวณ BMI แสดงบนหน้าโปรไฟล์
 }
