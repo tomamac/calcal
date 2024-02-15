@@ -119,7 +119,7 @@ class edit_profile_page extends StatelessWidget {
                           var weight = double.parse(_state.weight.text);
                           var height = int.parse(_state.height.text);
                           var age = int.parse(_state.age.text);
-                          var bmi = weight / ((height / 100) * (height / 100));
+                          var bmi = _state.bmiCal(weight, height);
                           final profile = profileModel(
                             weight: weight,
                             height: height,

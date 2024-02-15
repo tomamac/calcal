@@ -14,6 +14,11 @@ class editprofileState extends GetxController {
   }
 
 //TODO: BMI & BMR Calculator function
-  //void BMICal
+  //----ฟังก์ชั่นการคำนวณ BMI แสดงบนหน้าโปรไฟล์
+  double bmiCal(double weight, int height) {
+    double heightM = height / 100;
+    double bmi = weight / (heightM * heightM);
+    return bmi;
+  }
   //void BMRCal
 }
