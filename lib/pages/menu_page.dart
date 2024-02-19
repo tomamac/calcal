@@ -1,26 +1,11 @@
-import 'package:calcal/reuse.dart';
-import 'package:calcal/states/homepage_state.dart';
+import 'package:calcal/pages/fastfood_page.dart';
+import 'package:calcal/pages/manual_page.dart';
+import 'package:calcal/pages/recommended_page.dart';
 import 'package:calcal/values.dart';
 import 'package:flutter/material.dart';
 
-/// Flutter code sample for [TabBar].
-
-void main() => runApp(const menu_page());
-
 class menu_page extends StatelessWidget {
   const menu_page({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(useMaterial3: true),
-      home: const TabBarExample(),
-    );
-  }
-}
-
-class TabBarExample extends StatelessWidget {
-  const TabBarExample({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +14,15 @@ class TabBarExample extends StatelessWidget {
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Color.fromARGB(206, 206, 171, 147),
-          title: const Text('Food Menu'),
+          backgroundColor: palette.tabbgColor,
+          title: Container(
+            alignment: Alignment.center,
+            child: const Text(
+              'Food Menu',
+            ),
+          ),
           bottom: const TabBar(
-            tabs: <Widget>[
+            tabs: [
               Tab(
                 text: "Fast Food",
               ),
@@ -46,16 +36,10 @@ class TabBarExample extends StatelessWidget {
           ),
         ),
         body: const TabBarView(
-          children: <Widget>[
-            Center(
-              child: Text("It's rainy here"),
-            ),
-            Center(
-              child: Text("It's rainy here"),
-            ),
-            Center(
-              child: Text("It's sunny here"),
-            ),
+          children: [
+            fastfood_page(),
+            manual_page(),
+            recommended_page(),
           ],
         ),
       ),
