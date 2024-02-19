@@ -29,3 +29,14 @@ class sizes {
   static double bigfont = _bigfont;
   static double smallfont = _smallfont;
 }
+
+//Initial state values
+class ivalues {
+  static const double _idouble = 0.0;
+  static const int _iint = 0;
+  static const String _istring = '';
+
+  static double idouble = _idouble;
+  static int iint = _iint;
+  static String istring = _istring;
+}
