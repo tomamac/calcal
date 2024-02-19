@@ -21,6 +21,9 @@ class MyApp extends StatelessWidget {
           seedColor: palette.bgColor,
           background: palette.bgColor,
         ),
+        tabBarTheme: const TabBarTheme(
+          dividerColor: Colors.transparent, //อันนี้แก้เส้นขาวๆล่าง TabBar
+        ),
         useMaterial3: true,
         inputDecorationTheme: InputDecorationTheme(
           border: OutlineInputBorder(
