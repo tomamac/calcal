@@ -1,5 +1,4 @@
 import "package:calcal/models/profile_model.dart";
-import "package:calcal/sharedprefs.dart";
 import "package:get/get.dart";
 
 class profilepageState extends GetxController {
