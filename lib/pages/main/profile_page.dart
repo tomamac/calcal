@@ -21,7 +21,6 @@ class profile_page extends StatelessWidget {
             child: Stack(
               children: [
                 backgroundImg(),
-                //----ตั้งแต่ส่วนนี้น่าจะ Refactor ได้??----
                 Container(
                   padding: const EdgeInsets.all(30),
                   child: Column(

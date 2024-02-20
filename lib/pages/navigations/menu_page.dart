@@ -1,6 +1,6 @@
-import 'package:calcal/pages/fastfood_page.dart';
-import 'package:calcal/pages/manual_page.dart';
-import 'package:calcal/pages/recommended_page.dart';
+import 'package:calcal/pages/main/menu_pages/fastfood_page.dart';
+import 'package:calcal/pages/main/menu_pages/manual_page.dart';
+import 'package:calcal/pages/main/menu_pages/recommended_page.dart';
 import 'package:calcal/values.dart';
 import 'package:flutter/material.dart';
 
