@@ -1,7 +1,7 @@
-import 'package:calcal/pages/advice_page.dart';
-import 'package:calcal/pages/home_page.dart';
-import 'package:calcal/pages/menu_page.dart';
-import 'package:calcal/pages/profile_page.dart';
+import 'package:calcal/pages/main/advice_page.dart';
+import 'package:calcal/pages/main/home_page.dart';
+import 'package:calcal/pages/navigations/menu_page.dart';
+import 'package:calcal/pages/main/profile_page.dart';
 import 'package:calcal/states/mainpage_state.dart';
 import 'package:calcal/values.dart';
 import 'package:flutter/material.dart';

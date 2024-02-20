@@ -1,7 +1,9 @@
 import 'package:calcal/reuse.dart';
+import 'package:calcal/sharedprefs.dart';
 import 'package:calcal/states/homepage_state.dart';
 import 'package:calcal/values.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class home_page extends StatelessWidget {
   const home_page({
@@ -10,6 +12,7 @@ class home_page extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _state = Get.put(homepage_state());
     return SafeArea(
       child: Stack(
         children: [
@@ -38,11 +41,11 @@ class home_page extends StatelessWidget {
                         value: 0.3,
                         backgroundColor: palette.progressbgColor,
                         valueColor: AlwaysStoppedAnimation<Color>(
-                          homepage_state().calculateBackgroundColor(value: 0.3),
+                          _state.calculateBackgroundColor(value: 0.3),
                         ),
                         strokeWidth: 8,
                       ),
-                    )
+                    ),
                   ],
                 ),
               ],

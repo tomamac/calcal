@@ -6,6 +6,11 @@ class homepage_state extends GetxController {
 
   //VALUE OF PROGRESS INDICATOR
   RxDouble value = 0.00.obs;
+  RxInt bmr = 0.obs;
+
+  void setbmr(int bmr) {
+    this.bmr.value = bmr;
+  }
 
   //----TO BE ADDED----
   //----การคำนวณแปลงจาก calorie ผู้ใช้ไปเป็นเปอร์เซนต์----

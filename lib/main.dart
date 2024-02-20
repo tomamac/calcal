@@ -1,10 +1,11 @@
-import 'package:calcal/pages/bottom_nav.dart';
+import 'package:calcal/pages/navigations/bottom_nav.dart';
 import 'package:calcal/values.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
