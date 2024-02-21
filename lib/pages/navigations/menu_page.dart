@@ -1,6 +1,7 @@
-import 'package:calcal/pages/main/menu_pages/fastfood_page.dart';
+import 'package:calcal/pages/main/menu_pages/fastfood_pages/fastfood_page.dart';
 import 'package:calcal/pages/main/menu_pages/manual_page.dart';
 import 'package:calcal/pages/main/menu_pages/recommended_page.dart';
+import 'package:calcal/pages/main/menu_pages/fastfood_pages/kfc_page.dart';
 import 'package:calcal/values.dart';
 import 'package:flutter/material.dart';
 
@@ -10,8 +11,10 @@ class menu_page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
+
       initialIndex: 0,
-      length: 3,
+      length: 4,
+      main
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: palette.tabbgColor,
@@ -32,6 +35,9 @@ class menu_page extends StatelessWidget {
               Tab(
                 text: "Recommended",
               ),
+              Tab(
+                text: "kfc",
+              ),
             ],
           ),
         ),
@@ -40,6 +46,7 @@ class menu_page extends StatelessWidget {
             fastfood_page(),
             manual_page(),
             recommended_page(),
+            kfc_page(),
           ],
         ),
       ),
