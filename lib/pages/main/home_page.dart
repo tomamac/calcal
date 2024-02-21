@@ -51,11 +51,11 @@ class home_page extends StatelessWidget {
                                     width: 150,
                                     height: 150,
                                     child: CircularProgressIndicator(
-                                      value: 0.3,
+                                      value: _state.indvalue.value,
                                       backgroundColor: palette.progressbgColor,
                                       valueColor: AlwaysStoppedAnimation<Color>(
                                         _state.calculateBackgroundColor(
-                                            value: 0.3),
+                                            value: _state.indvalue.value),
                                       ),
                                       strokeWidth: 8,
                                     ),
@@ -64,6 +64,12 @@ class home_page extends StatelessWidget {
                               ),
                             ],
                           ),
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                            _state.updateIndicator(100);
+                          },
+                          child: Text('test progress'),
                         ),
                         Container(
                           decoration: BoxDecoration(
@@ -76,9 +82,9 @@ class home_page extends StatelessWidget {
                           child: Text(
                             _profilestate.bmr.value == ivalues.iint
                                 ? snapshot.data!.getInt('bmr') == null
-                                    ? '${0} / ${_profilestate.bmr.value} Kcal'
-                                    : '${0} / ${snapshot.data!.getInt('bmr')} Kcal'
-                                : '${0} / ${_profilestate.bmr.value} Kcal',
+                                    ? '${_state.sumeat} / ${_profilestate.bmr.value} Kcal'
+                                    : '${_state.sumeat} / ${snapshot.data!.getInt('bmr')} Kcal'
+                                : '${_state.sumeat} / ${_profilestate.bmr.value} Kcal',
                             style: TextStyle(fontSize: sizes.smallfont),
                           ),
                         ),
@@ -135,7 +141,44 @@ class home_page extends StatelessWidget {
                                     color: palette.textbgColor,
                                   ),
                                   child: Column(
-                                    children: [],
+                                    children: [
+                                      SizedBox(
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.39,
+                                        child: ListView(
+                                          children: [
+                                            //TODO: Implement eaten list sharedpref
+                                            //to ref for length, name, and calories
+                                            for (int i = 0; i < 10; i++)
+                                              Container(
+                                                margin: EdgeInsets.all(10),
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    Text(
+                                                      'menu${i}',
+                                                      style: TextStyle(
+                                                        fontSize:
+                                                            sizes.smallfont,
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      '${i} Kcal',
+                                                      style: TextStyle(
+                                                        fontSize:
+                                                            sizes.smallfont,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ],

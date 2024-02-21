@@ -2,6 +2,7 @@ import 'package:calcal/models/profile_model.dart';
 import 'package:calcal/reuse.dart';
 import 'package:calcal/sharedprefs.dart';
 import 'package:calcal/states/editprofile_state.dart';
+import 'package:calcal/states/homepage_state.dart';
 import 'package:calcal/states/profilepage_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -17,10 +18,12 @@ class edit_profile_page extends StatelessWidget {
   Widget build(BuildContext context) {
     final _state = Get.put(editprofileState());
     final _profilestate = Get.put(profilepageState());
+    final _homepagestate = Get.put(homepage_state());
     return FutureBuilder(
       future: sharedprefs.instance.getProfile(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
+          var data = snapshot.data! as Map;
           _state.initController(_state.weight, "weight");
           _state.initController(_state.height, "height");
           _state.initController(_state.age, "age");
@@ -143,6 +146,7 @@ class edit_profile_page extends StatelessWidget {
                                   age,
                                   sex,
                                 );
+                                var oldbmr = data['bmr'];
                                 final profile = profileModel(
                                   weight: weight,
                                   height: height,
@@ -151,8 +155,12 @@ class edit_profile_page extends StatelessWidget {
                                   bmi: double.parse(bmi.toStringAsFixed(2)),
                                   bmr: bmr,
                                 );
+                                if (bmr != oldbmr) {
+                                  _homepagestate.newBMR();
+                                }
                                 _profilestate.updateData(profile);
                                 sharedprefs.instance.addprofileToSF(profile);
+                                // sharedprefs.instance.setInt('sumeat', 0);
 
                                 Get.back();
                               },

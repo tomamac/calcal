@@ -1,4 +1,4 @@
-import 'package:calcal/states/profilepage_state.dart';
+import 'package:calcal/sharedprefs.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -6,12 +6,23 @@ class homepage_state extends GetxController {
   static homepage_state get instance => Get.find();
 
   //VALUE OF PROGRESS INDICATOR
-  RxDouble value = 0.00.obs;
-  RxInt bmr = profilepageState().bmr.value.obs;
+  final RxDouble indvalue = 0.00.obs;
+  // RxInt bmr = profilepageState().bmr.value.obs;
+  final RxInt sumeat = 0.obs;
 
   //----TO BE ADDED----
   //----การคำนวณแปลงจาก calorie ผู้ใช้ไปเป็นเปอร์เซนต์----
   //----อาจต้องดึงค่าต่างๆจากหน้า profile มาคำนวณในนี้เพื่อแปลงเป็น BMR(calorie ที่ผู้ใช้ควรกิน)----
+  //----Formula: Eaten Kcal / User BMR = %Eaten
+  void updateIndicator(int eaten) async {
+    indvalue.value += eaten / await sharedprefs.instance.getInt('bmr');
+    sumeat.value += eaten;
+  }
+
+  void newBMR() {
+    indvalue.value = 0;
+    sumeat.value = 0;
+  }
 
   //ฟังก์ชั่นคำนวณสี progress indicator ตาม % ของ calorie ที่กินไป
   Color calculateBackgroundColor({required double value}) {
