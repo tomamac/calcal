@@ -18,6 +18,7 @@ class advice_page extends StatelessWidget {
       future: SharedPreferences.getInstance(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
+          int spBMR = snapshot.data!.getInt('bmr') ?? 0;
           return SafeArea(
             child: Stack(
               children: [
@@ -96,10 +97,9 @@ class advice_page extends StatelessWidget {
                               borderRadius: BorderRadius.circular(15),
                               color: palette.textbgColor),
                           child: Text(
-                            _state.sumeat.value > _profilestate.bmr.value
+                            _state.sumeat.value > spBMR
                                 ? "การรับประทานเกิน Kcal ที่กำหนด\nอาจส่งผลเสียต่อสุขภาพได้\nดูคำแนะนำการออกกำลังกายได้ข้างล่าง"
-                                : _state.sumeat.value >
-                                        (_profilestate.bmr.value * 0.5)
+                                : _state.sumeat.value > (spBMR * 0.5)
                                     ? "รักษาปริมาณการรับประทานให้อยู่ในเกณฑ์จะสามารถคงน้ำหนักหรือลดน้ำหนักได้\nและเป็นผลดีต่อสุขภาพ"
                                     : "รับประทานน้อยกว่ากำหนด",
                             textAlign: TextAlign.center,
