@@ -21,6 +21,11 @@ class edit_profile_page extends StatelessWidget {
       future: sharedprefs.instance.getProfile(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
+          _state.initController(_state.weight, "weight");
+          _state.initController(_state.height, "height");
+          _state.initController(_state.age, "age");
+          _state.initSex();
+
           return Scaffold(
             body: SafeArea(
               child: Stack(
@@ -33,8 +38,6 @@ class edit_profile_page extends StatelessWidget {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          //TODO: ตั้งค่าเริ่มต้น TextFormField
-                          //โดยดึงค่าจาก SharedPreferences
                           TextFormField(
                             controller: _state.weight,
                             keyboardType: TextInputType.number,
@@ -44,6 +47,7 @@ class edit_profile_page extends StatelessWidget {
                             ],
                             decoration: const InputDecoration(
                               hintText: 'น้ำหนัก (กก.)',
+                              labelText: 'น้ำหนัก (กก.)',
                             ),
                           ),
                           TextFormField(
@@ -54,6 +58,7 @@ class edit_profile_page extends StatelessWidget {
                             ],
                             decoration: const InputDecoration(
                               hintText: 'ส่วนสูง (ซม.)',
+                              labelText: 'ส่วนสูง (ซม.)',
                             ),
                           ),
                           TextFormField(
@@ -64,6 +69,7 @@ class edit_profile_page extends StatelessWidget {
                             ],
                             decoration: const InputDecoration(
                               hintText: 'อายุ (ปี)',
+                              labelText: 'อายุ (ปี)',
                             ),
                           ),
                           Obx(
@@ -143,10 +149,10 @@ class edit_profile_page extends StatelessWidget {
                                   age: age,
                                   sex: sex,
                                   bmi: double.parse(bmi.toStringAsFixed(2)),
+                                  bmr: bmr,
                                 );
                                 _profilestate.updateData(profile);
                                 sharedprefs.instance.addprofileToSF(profile);
-                                sharedprefs.instance.setInt("bmr", bmr);
 
                                 Get.back();
                               },

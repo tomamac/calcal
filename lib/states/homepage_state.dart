@@ -1,3 +1,4 @@
+import 'package:calcal/states/profilepage_state.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -6,11 +7,7 @@ class homepage_state extends GetxController {
 
   //VALUE OF PROGRESS INDICATOR
   RxDouble value = 0.00.obs;
-  RxInt bmr = 0.obs;
-
-  void setbmr(int bmr) {
-    this.bmr.value = bmr;
-  }
+  RxInt bmr = profilepageState().bmr.value.obs;
 
   //----TO BE ADDED----
   //----การคำนวณแปลงจาก calorie ผู้ใช้ไปเป็นเปอร์เซนต์----

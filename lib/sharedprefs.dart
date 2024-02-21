@@ -47,25 +47,23 @@ class sharedprefs {
   }
 
   Future<void> addprofileToSF(profileModel profile) async {
-    try {
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      prefs.setDouble('weight', profile.weight);
-      prefs.setInt('height', profile.height);
-      prefs.setInt('age', profile.age);
-      prefs.setString('sex', profile.sex == 0 ? "ชาย" : "หญิง");
-      prefs.setDouble('bmi', profile.bmi);
-    } catch (e) {
-      print('add to SF ${e.toString()}');
-    }
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setDouble('weight', profile.weight);
+    prefs.setInt('height', profile.height);
+    prefs.setInt('age', profile.age);
+    prefs.setString('sex', profile.sex == 0 ? "ชาย" : "หญิง");
+    prefs.setDouble('bmi', profile.bmi);
+    prefs.setInt('bmr', profile.bmr);
   }
 
   getProfile() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    final double weight = prefs.getDouble('weight') ?? 0;
-    final int height = prefs.getInt('height') ?? 0;
-    final int age = prefs.getInt('age') ?? 0;
+    final double? weight = prefs.getDouble('weight');
+    final int? height = prefs.getInt('height');
+    final int? age = prefs.getInt('age');
     final String sex = prefs.getString('sex') ?? '';
-    final double bmi = prefs.getDouble('bmi') ?? 0;
+    final double? bmi = prefs.getDouble('bmi');
+    final int bmr = prefs.getInt('bmr') ?? 0;
 
     return {
       'weight': weight,
@@ -73,6 +71,7 @@ class sharedprefs {
       'age': age,
       'sex': sex,
       'bmi': bmi,
+      'bmr': bmr,
     };
   }
 }
