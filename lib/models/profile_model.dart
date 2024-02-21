@@ -4,6 +4,7 @@ class profileModel {
   final int age;
   final int sex;
   final double bmi;
+  final int bmr;
 
   const profileModel({
     required this.weight,
@@ -11,5 +12,6 @@ class profileModel {
     required this.age,
     required this.sex,
     required this.bmi,
+    required this.bmr,
   });
 }

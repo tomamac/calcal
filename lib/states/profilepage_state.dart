@@ -8,6 +8,7 @@ class profilepageState extends GetxController {
   final RxInt age = 0.obs;
   final RxString sex = ''.obs;
   final RxDouble bmi = 0.0.obs;
+  final RxInt bmr = 0.obs;
 
 //----ค่าต่างๆในหน้า profile อัพเดทหลังยืนยันแก้ไขข้อมูล
   void updateData(profileModel profile) {
@@ -16,5 +17,6 @@ class profilepageState extends GetxController {
     age.value = profile.age;
     sex.value = profile.sex == 0 ? "ชาย" : "หญิง";
     bmi.value = profile.bmi;
+    bmr.value = profile.bmr;
   }
 }

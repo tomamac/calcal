@@ -58,7 +58,9 @@ class profile_page extends StatelessWidget {
                                   ),
                                   Text(
                                     _state.weight.value == ivalues.idouble
-                                        ? data['weight'].toString()
+                                        ? data['weight'] == null
+                                            ? ""
+                                            : data['weight'].toString()
                                         : _state.weight.toString(),
                                     style: TextStyle(
                                       fontSize: sizes.bigfont,
@@ -85,7 +87,9 @@ class profile_page extends StatelessWidget {
                                   ),
                                   Text(
                                     _state.height.value == ivalues.iint
-                                        ? data['height'].toString()
+                                        ? data['height'] == null
+                                            ? ""
+                                            : data['height'].toString()
                                         : _state.height.toString(),
                                     style: TextStyle(
                                       fontSize: sizes.bigfont,
@@ -112,7 +116,9 @@ class profile_page extends StatelessWidget {
                                   ),
                                   Text(
                                     _state.age.value == ivalues.iint
-                                        ? data['age'].toString()
+                                        ? data['age'] == null
+                                            ? ""
+                                            : data['age'].toString()
                                         : _state.age.toString(),
                                     style: TextStyle(
                                       fontSize: sizes.bigfont,
@@ -161,7 +167,9 @@ class profile_page extends StatelessWidget {
                                   ),
                                   Text(
                                     _state.bmi.value == ivalues.idouble
-                                        ? data['bmi'].toString()
+                                        ? data['bmi'] == null
+                                            ? ""
+                                            : data['bmi'].toString()
                                         : _state.bmi.toString(),
                                     style: TextStyle(
                                       fontSize: sizes.bigfont,
