@@ -18,6 +18,7 @@ class advice_page extends StatelessWidget {
       future: SharedPreferences.getInstance(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
+          //SharedPrefsBMR
           int spBMR = snapshot.data!.getInt('bmr') ?? 0;
           return SafeArea(
             child: Stack(
@@ -29,7 +30,7 @@ class advice_page extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Spacer(),
+                        const Spacer(),
                         Container(
                           margin: const EdgeInsets.all(20),
                           child: Stack(
@@ -51,11 +52,15 @@ class advice_page extends StatelessWidget {
                                     width: 150,
                                     height: 150,
                                     child: CircularProgressIndicator(
-                                      value: _state.indvalue.value,
+                                      value:
+                                          snapshot.data!.getDouble('indval') ??
+                                              0,
                                       backgroundColor: palette.progressbgColor,
                                       valueColor: AlwaysStoppedAnimation<Color>(
                                         _state.calculateBackgroundColor(
-                                            value: _state.indvalue.value),
+                                            value: snapshot.data!
+                                                    .getDouble('indval') ??
+                                                0),
                                       ),
                                       strokeWidth: 8,
                                     ),
@@ -64,12 +69,6 @@ class advice_page extends StatelessWidget {
                               ),
                             ],
                           ),
-                        ),
-                        ElevatedButton(
-                          onPressed: () {
-                            _state.updateIndicator(100);
-                          },
-                          child: Text('test progress'),
                         ),
                         Container(
                           decoration: BoxDecoration(
@@ -80,15 +79,11 @@ class advice_page extends StatelessWidget {
                           height: 50,
                           alignment: Alignment.center,
                           child: Text(
-                            _profilestate.bmr.value == ivalues.iint
-                                ? snapshot.data!.getInt('bmr') == null
-                                    ? '${_state.sumeat} / ${_profilestate.bmr.value} Kcal'
-                                    : '${_state.sumeat} / ${snapshot.data!.getInt('bmr')} Kcal'
-                                : '${_state.sumeat} / ${_profilestate.bmr.value} Kcal',
+                            '${_state.sumeat.value == 0 ? snapshot.data!.getInt('sumeat') ?? 0 : _state.sumeat} / ${snapshot.data!.getInt('bmr') ?? 0} Kcal',
                             style: TextStyle(fontSize: sizes.smallfont),
                           ),
                         ),
-                        Spacer(),
+                        const Spacer(),
                         Container(
                           alignment: Alignment.center,
                           height: 100,
@@ -108,22 +103,26 @@ class advice_page extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Spacer(),
+                        const Spacer(),
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             backgroundColor: palette.buttonColor,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
                           ),
                           onPressed: () {
                             Get.to(
-                              exercise_page(),
+                              const exercise_page(),
                             );
                           },
                           child: Text(
                             'การออกกำลังกายที่แนะนำ',
-                            style: TextStyle(fontSize: sizes.smallfont),
+                            style: TextStyle(
+                                fontSize: sizes.smallfont, color: Colors.black),
                           ),
                         ),
-                        Spacer(),
+                        const Spacer(),
                       ],
                     ),
                   ),
