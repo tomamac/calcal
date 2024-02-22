@@ -1,6 +1,5 @@
 import 'package:calcal/reuse.dart';
 import 'package:calcal/states/homepage_state.dart';
-import 'package:calcal/states/profilepage_state.dart';
 import 'package:calcal/values.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,11 +13,12 @@ class home_page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _state = Get.put(homepage_state());
-    final _profilestate = Get.put(profilepageState());
     return FutureBuilder(
       future: SharedPreferences.getInstance(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
+          // var foodList = snapshot.data!.getStringList('name') ?? [];
+          // var kcalList = snapshot.data!.getStringList('kcal') ?? [];
           return SafeArea(
             child: Stack(
               children: [
@@ -51,11 +51,18 @@ class home_page extends StatelessWidget {
                                     width: 150,
                                     height: 150,
                                     child: CircularProgressIndicator(
-                                      value: _state.indvalue.value,
+                                      value:
+                                          snapshot.data!.getInt('bmr') == null
+                                              ? 0
+                                              : (snapshot.data!
+                                                      .getDouble('indval') ??
+                                                  0),
                                       backgroundColor: palette.progressbgColor,
                                       valueColor: AlwaysStoppedAnimation<Color>(
                                         _state.calculateBackgroundColor(
-                                            value: _state.indvalue.value),
+                                            value: snapshot.data!
+                                                    .getDouble('indval') ??
+                                                0),
                                       ),
                                       strokeWidth: 8,
                                     ),
@@ -64,12 +71,6 @@ class home_page extends StatelessWidget {
                               ),
                             ],
                           ),
-                        ),
-                        ElevatedButton(
-                          onPressed: () {
-                            _state.updateIndicator(100);
-                          },
-                          child: Text('test progress'),
                         ),
                         Container(
                           decoration: BoxDecoration(
@@ -80,11 +81,7 @@ class home_page extends StatelessWidget {
                           height: 50,
                           alignment: Alignment.center,
                           child: Text(
-                            _profilestate.bmr.value == ivalues.iint
-                                ? snapshot.data!.getInt('bmr') == null
-                                    ? '${_state.sumeat} / ${_profilestate.bmr.value} Kcal'
-                                    : '${_state.sumeat} / ${snapshot.data!.getInt('bmr')} Kcal'
-                                : '${_state.sumeat} / ${_profilestate.bmr.value} Kcal',
+                            '${_state.sumeat.value == 0 ? snapshot.data!.getInt('sumeat') ?? 0 : _state.sumeat} / ${snapshot.data!.getInt('bmr') ?? 0} Kcal',
                             style: TextStyle(fontSize: sizes.smallfont),
                           ),
                         ),
@@ -150,7 +147,14 @@ class home_page extends StatelessWidget {
                                           children: [
                                             //TODO: Implement eaten list sharedpref
                                             //to ref for length, name, and calories
-                                            for (int i = 0; i < 10; i++)
+                                            for (int i = 0;
+                                                i <
+                                                    (snapshot.data!
+                                                                .getStringList(
+                                                                    'name') ??
+                                                            [])
+                                                        .length;
+                                                i++)
                                               Container(
                                                 margin: EdgeInsets.all(10),
                                                 child: Row(
@@ -159,14 +163,18 @@ class home_page extends StatelessWidget {
                                                           .spaceBetween,
                                                   children: [
                                                     Text(
-                                                      'menu${i}',
+                                                      (snapshot.data!
+                                                              .getStringList(
+                                                                  'name') ??
+                                                          [])[i],
                                                       style: TextStyle(
                                                         fontSize:
                                                             sizes.smallfont,
                                                       ),
                                                     ),
                                                     Text(
-                                                      '${i} Kcal',
+                                                      '${(snapshot.data!.getStringList('kcal') ?? [])[i]} Kcal',
+                                                      // '${(snapshot.data!.getStringList('kcal') ?? [])[i]} Kcal',
                                                       style: TextStyle(
                                                         fontSize:
                                                             sizes.smallfont,

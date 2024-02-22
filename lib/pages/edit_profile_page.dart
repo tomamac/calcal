@@ -4,6 +4,7 @@ import 'package:calcal/sharedprefs.dart';
 import 'package:calcal/states/editprofile_state.dart';
 import 'package:calcal/states/homepage_state.dart';
 import 'package:calcal/states/profilepage_state.dart';
+import 'package:calcal/values.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -133,6 +134,7 @@ class edit_profile_page extends StatelessWidget {
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 ),
+                                backgroundColor: palette.buttonColor,
                               ),
                               onPressed: () {
                                 var weight = double.parse(_state.weight.text);
@@ -164,7 +166,12 @@ class edit_profile_page extends StatelessWidget {
 
                                 Get.back();
                               },
-                              child: const Text('บันทึก'),
+                              child: Text(
+                                'บันทึก',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                ),
+                              ),
                             ),
                           ),
                           TextButton(

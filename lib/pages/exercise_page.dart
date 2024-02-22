@@ -18,7 +18,7 @@ class exercise_page extends StatelessWidget {
           children: [
             backgroundImg(),
             Container(
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               child: ListView(
                 children: [
                   Row(
@@ -41,7 +41,7 @@ class exercise_page extends StatelessWidget {
                     ],
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 10),
+                    margin: const EdgeInsets.only(top: 10),
                     height: 150,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
@@ -51,7 +51,7 @@ class exercise_page extends StatelessWidget {
                     child: ListTile(
                       onTap: () {
                         Get.to(
-                          squat_page(),
+                          const squat_page(),
                         );
                       },
                       leading: Image.asset(
@@ -66,11 +66,11 @@ class exercise_page extends StatelessWidget {
                           fontSize: sizes.bigfont,
                         ),
                       ),
-                      trailing: Icon(Icons.arrow_circle_right_outlined),
+                      trailing: const Icon(Icons.arrow_circle_right_outlined),
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 10),
+                    margin: const EdgeInsets.only(top: 10),
                     height: 150,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
@@ -80,7 +80,7 @@ class exercise_page extends StatelessWidget {
                     child: ListTile(
                       onTap: () {
                         Get.to(
-                          swim_page(),
+                          const swim_page(),
                         );
                       },
                       leading: Image.asset(
@@ -95,11 +95,11 @@ class exercise_page extends StatelessWidget {
                           fontSize: sizes.bigfont,
                         ),
                       ),
-                      trailing: Icon(Icons.arrow_circle_right_outlined),
+                      trailing: const Icon(Icons.arrow_circle_right_outlined),
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 10),
+                    margin: const EdgeInsets.only(top: 10),
                     height: 150,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
@@ -109,7 +109,7 @@ class exercise_page extends StatelessWidget {
                     child: ListTile(
                       onTap: () {
                         Get.to(
-                          run_page(),
+                          const run_page(),
                         );
                       },
                       leading: Image.asset(
@@ -124,11 +124,11 @@ class exercise_page extends StatelessWidget {
                           fontSize: sizes.bigfont,
                         ),
                       ),
-                      trailing: Icon(Icons.arrow_circle_right_outlined),
+                      trailing: const Icon(Icons.arrow_circle_right_outlined),
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 10, bottom: 10),
+                    margin: const EdgeInsets.only(top: 10, bottom: 10),
                     height: 150,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
@@ -138,7 +138,7 @@ class exercise_page extends StatelessWidget {
                     child: ListTile(
                       onTap: () {
                         Get.to(
-                          plank_page(),
+                          const plank_page(),
                         );
                       },
                       leading: Image.asset(
@@ -153,16 +153,26 @@ class exercise_page extends StatelessWidget {
                           fontSize: sizes.bigfont,
                         ),
                       ),
-                      trailing: Icon(Icons.arrow_circle_right_outlined),
+                      trailing: const Icon(Icons.arrow_circle_right_outlined),
                     ),
                   ),
                   ElevatedButton(
                     onPressed: () {
                       Get.back();
                     },
-                    child: Text('BACK'),
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: palette.buttonColor),
+                      backgroundColor: palette.buttonColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    child: Text(
+                      'BACK',
+                      style: TextStyle(
+                        fontSize: sizes.smallfont,
+                        color: Colors.black,
+                      ),
+                    ),
                   ),
                 ],
               ),
