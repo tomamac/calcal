@@ -1,3 +1,4 @@
+import 'package:calcal/pages/popup.dart';
 import 'package:calcal/reuse.dart';
 import 'package:flutter/material.dart';
 import 'package:calcal/values.dart';
@@ -7,88 +8,294 @@ class kfc_page extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Stack(
-        children: [
-          backgroundImg(),
-          Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: palette.tabbgColor,
+        title: const Text(
+          "KFC Menu",
+        ),
+      ),
+      body: SafeArea(
+        child: Stack(
+          children: [
+            backgroundImg(),
+            Container(
+              padding: const EdgeInsets.all(20),
+              child: ListView(
                 children: [
-                  Container(
-                    margin: EdgeInsets.fromLTRB(0, 30, 0, 0),
-                    width: 300,
-                    height: 100,
-                    decoration: BoxDecoration(
-                      color: palette.progressmidColor,
-                      shape: BoxShape.rectangle,
+                  GestureDetector(
+                    onTap: () {
+                      popup(context, "ไก่วิงซ์แซ่บ 3 ชิ้น\n300 Kcal",
+                          'images/wings.png');
+                    },
+                    child: Card(
+                      margin: const EdgeInsets.only(
+                        top: 10,
+                        bottom: 10,
+                      ),
+                      child: Container(
+                        height: 125,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: palette.buttonColor,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  'images/wings.png',
+                                  width: 125,
+                                  height: 125,
+                                ),
+                              ],
+                            ),
+                            Stack(
+                              alignment: Alignment.center,
+                              children: [
+                                Container(
+                                  width: 200,
+                                  height: 100,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
+                                ),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Row(children: [
+                                      Text(
+                                        "ไก่วิงซ์แซ่บ 3 ชิ้น",
+                                        style: TextStyle(
+                                          fontSize: sizes.smallfont,
+                                        ),
+                                      )
+                                    ]),
+                                    Row(children: [
+                                      Text(
+                                        "300 Kcal",
+                                        style: TextStyle(
+                                          fontSize: sizes.smallfont,
+                                        ),
+                                      )
+                                    ]),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                    child: Image.asset(
-                      'images/kfc.png',
+                  ),
+                  GestureDetector(
+                    onTap: () {},
+                    child: Card(
+                      margin: const EdgeInsets.only(
+                        top: 10,
+                        bottom: 10,
+                      ),
+                      child: Container(
+                        height: 125,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: palette.buttonColor,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  'images/tender.png',
+                                  width: 125,
+                                  height: 125,
+                                ),
+                              ],
+                            ),
+                            Stack(
+                              alignment: Alignment.center,
+                              children: [
+                                Container(
+                                  width: 200,
+                                  height: 100,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
+                                ),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Row(children: [
+                                      Text(
+                                        "ไก่ไม่มีกระดูก 2 ชิ้น",
+                                        style: TextStyle(
+                                          fontSize: sizes.smallfont,
+                                        ),
+                                      )
+                                    ]),
+                                    Row(children: [
+                                      Text(
+                                        "130 Kcal",
+                                        style: TextStyle(
+                                          fontSize: sizes.smallfont,
+                                        ),
+                                      )
+                                    ]),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {},
+                    child: Card(
+                      margin: const EdgeInsets.only(
+                        top: 10,
+                        bottom: 10,
+                      ),
+                      child: Container(
+                        height: 125,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: palette.buttonColor,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  'images/nugget.png',
+                                  width: 125,
+                                  height: 125,
+                                ),
+                              ],
+                            ),
+                            Stack(
+                              alignment: Alignment.center,
+                              children: [
+                                Container(
+                                  width: 200,
+                                  height: 100,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
+                                ),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Row(children: [
+                                      Text(
+                                        "นักเก็ตส์ 6 ชิ้น",
+                                        style: TextStyle(
+                                          fontSize: sizes.smallfont,
+                                        ),
+                                      )
+                                    ]),
+                                    Row(children: [
+                                      Text(
+                                        "270 Kcal",
+                                        style: TextStyle(
+                                          fontSize: sizes.smallfont,
+                                        ),
+                                      )
+                                    ]),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {},
+                    child: Card(
+                      margin: const EdgeInsets.only(
+                        top: 10,
+                        bottom: 10,
+                      ),
+                      child: Container(
+                        height: 125,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: palette.buttonColor,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  'images/tart.png',
+                                  width: 125,
+                                  height: 125,
+                                ),
+                              ],
+                            ),
+                            Stack(
+                              alignment: Alignment.center,
+                              children: [
+                                Container(
+                                  width: 200,
+                                  height: 100,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
+                                ),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Row(children: [
+                                      Text(
+                                        "ทาร์ตไข่ 1 ชิ้น",
+                                        style: TextStyle(
+                                          fontSize: sizes.smallfont,
+                                        ),
+                                      )
+                                    ]),
+                                    Row(children: [
+                                      Text(
+                                        "170 Kcal",
+                                        style: TextStyle(
+                                          fontSize: sizes.smallfont,
+                                        ),
+                                      )
+                                    ]),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
                 ],
               ),
-              //-------------------------------------------------------
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Container(
-                    margin: EdgeInsets.fromLTRB(0, 30, 0, 0),
-                    width: 300,
-                    height: 100,
-                    decoration: BoxDecoration(
-                      color: palette.progressmidColor,
-                      shape: BoxShape.rectangle,
-                    ),
-                    child: Image.asset(
-                      'images/kfc.png',
-                    ),
-                  ),
-                ],
-              ),
-              //-------------------------------------------------------
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Container(
-                    margin: EdgeInsets.fromLTRB(0, 30, 0, 0),
-                    width: 300,
-                    height: 100,
-                    decoration: BoxDecoration(
-                      color: palette.progressmidColor,
-                      shape: BoxShape.rectangle,
-                    ),
-                    child: Image.asset(
-                      'images/kfc.png',
-                    ),
-                  ),
-                ],
-              ),
-              //-------------------------------------------------------
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Container(
-                    margin: EdgeInsets.fromLTRB(0, 30, 0, 0),
-                    width: 300,
-                    height: 100,
-                    decoration: BoxDecoration(
-                      color: palette.progressmidColor,
-                      shape: BoxShape.rectangle,
-                    ),
-                    child: Image.asset(
-                      'images/kfc.png',
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-
-          //
-        ],
+            ),
+          ],
+        ),
       ),
     );
   }

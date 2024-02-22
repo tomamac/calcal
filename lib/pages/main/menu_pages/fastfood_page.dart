@@ -1,3 +1,4 @@
+import 'package:calcal/pages/main/menu_pages/fastfood_pages/kfc_page.dart';
 import 'package:calcal/reuse.dart';
 import 'package:flutter/material.dart';
 import 'package:calcal/values.dart';
@@ -17,23 +18,26 @@ class fastfood_page extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(
+                        kfc_page(),
+                      );
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+                      width: 100,
+                      height: 100,
+                      decoration: BoxDecoration(
+                        color: palette.progressmidColor,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Image.asset(
+                        'images/kfc.png',
+                      ),
+                    ),
                   ),
                   Container(
-                    margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
-                    width: 100,
-                    height: 100,
-                    decoration: BoxDecoration(
-                      color: palette.progressmidColor,
-                      shape: BoxShape.circle,
-                    ),
-                    child: Image.asset(
-                      'images/kfc.png',
-                    ),
-                  ),
-                  //------------------------------------------
-                  Container(
-                    margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                    margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                     width: 100,
                     height: 100,
                     decoration: BoxDecoration(
@@ -44,9 +48,8 @@ class fastfood_page extends StatelessWidget {
                       'images/pizza_hut.png',
                     ),
                   ),
-                  //------------------------------------------
                   Container(
-                    margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                    margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                     width: 100,
                     height: 100,
                     decoration: BoxDecoration(
@@ -59,14 +62,11 @@ class fastfood_page extends StatelessWidget {
                   ),
                 ],
               ),
-
-              //------------------------------------------------
-
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Container(
-                    margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                    margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                     width: 100,
                     height: 100,
                     decoration: BoxDecoration(
@@ -77,9 +77,8 @@ class fastfood_page extends StatelessWidget {
                       'images/subway.png',
                     ),
                   ),
-                  //------------------------------------------
                   Container(
-                    margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                    margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                     width: 100,
                     height: 100,
                     decoration: BoxDecoration(
@@ -90,9 +89,8 @@ class fastfood_page extends StatelessWidget {
                       'images/mc.png',
                     ),
                   ),
-                  //------------------------------------------
                   Container(
-                    margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                    margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                     width: 100,
                     height: 100,
                     decoration: BoxDecoration(
@@ -105,13 +103,11 @@ class fastfood_page extends StatelessWidget {
                   ),
                 ],
               ),
-
-              //----------------------------------------------
-
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Container(
-                    margin: EdgeInsets.fromLTRB(17, 20, 0, 0),
+                    margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                     width: 100,
                     height: 100,
                     decoration: BoxDecoration(
@@ -122,9 +118,8 @@ class fastfood_page extends StatelessWidget {
                       'images/bonchon.png',
                     ),
                   ),
-                  //------------------------------------------
                   Container(
-                    margin: EdgeInsets.fromLTRB(30, 20, 0, 0),
+                    margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                     width: 100,
                     height: 100,
                     decoration: BoxDecoration(
@@ -135,12 +130,13 @@ class fastfood_page extends StatelessWidget {
                       'images/pepper_lunch.png',
                     ),
                   ),
+                  const SizedBox(
+                    width: 100,
+                  ),
                 ],
               )
             ],
           ),
-
-          //
         ],
       ),
     );
