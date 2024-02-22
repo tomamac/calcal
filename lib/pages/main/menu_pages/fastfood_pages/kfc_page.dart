@@ -26,8 +26,8 @@ class kfc_page extends StatelessWidget {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      popup(context, "ไก่วิงซ์แซ่บ 3 ชิ้น\n300 Kcal",
-                          'images/wings.png', 300);
+                      popup(context, "ไก่วิงซ์แซ่บ 3 ชิ้น", 'images/wings.png',
+                          300, "\n300 Kcal");
                     },
                     child: Card(
                       margin: const EdgeInsets.only(
@@ -95,8 +95,8 @@ class kfc_page extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      popup(context, "ไก่ไม่มีกระดูก 2 ชิ้น\n130 Kcal",
-                          'images/tender.png', 130);
+                      popup(context, "ไก่ไม่มีกระดูก 2 ชิ้น",
+                          'images/tender.png', 130, '\n130 Kcal');
                     },
                     child: Card(
                       margin: const EdgeInsets.only(
@@ -164,8 +164,8 @@ class kfc_page extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      popup(context, "นักเก็ตส์ 6 ชิ้น\n270 Kcal",
-                          'images/nugget.png', 270);
+                      popup(context, "นักเก็ตส์ 6 ชิ้น", 'images/nugget.png',
+                          270, '\n270 Kcal');
                     },
                     child: Card(
                       margin: const EdgeInsets.only(
@@ -233,8 +233,8 @@ class kfc_page extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      popup(context, "ทาร์ตไข่ 1 ชิ้น\n170 Kcal",
-                          'images/tart.png', 170);
+                      popup(context, "ทาร์ตไข่ 1 ชิ้น", 'images/tart.png', 170,
+                          '\n170 Kcal');
                     },
                     child: Card(
                       margin: const EdgeInsets.only(

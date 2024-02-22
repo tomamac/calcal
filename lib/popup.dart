@@ -4,7 +4,8 @@ import 'package:calcal/values.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-dynamic popup(BuildContext context, String name, String asset, int kcal) async {
+dynamic popup(BuildContext context, String name, String asset, int kcal,
+    String kcalt) async {
   // show the modal dialog and pass some data to it
   // final result = await Navigator.of(context).push(FullScreenModal(
   //       title: 'This is a title',
@@ -15,6 +16,7 @@ dynamic popup(BuildContext context, String name, String asset, int kcal) async {
       name: name,
       asset: asset,
       kcal: kcal,
+      kcalt: kcalt,
     ),
   );
   // print the data returned by the modal if any
@@ -28,10 +30,12 @@ class FullScreenModal extends ModalRoute {
   final String name;
   final String asset;
   final int kcal;
+  final String kcalt;
 
   // constructor
   FullScreenModal({
     required this.name,
+    required this.kcalt,
     required this.asset,
     required this.kcal,
   });
@@ -176,7 +180,7 @@ class FullScreenModal extends ModalRoute {
                       borderRadius: BorderRadius.circular(15),
                       color: Colors.white),
                   child: Text(
-                    name,
+                    '${name}${kcalt}',
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: sizes.smallfont),
                   ),
@@ -193,6 +197,8 @@ class FullScreenModal extends ModalRoute {
                 // ),
                 ElevatedButton(
                   onPressed: () {
+                    _homepagestate.addFoodList(name);
+                    _homepagestate.addKcalList(kcal.toString());
                     _homepagestate.updateIndicator(kcal * _state.count.value);
                     Get.showSnackbar(
                       GetSnackBar(
