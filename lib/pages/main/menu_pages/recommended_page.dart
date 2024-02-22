@@ -18,8 +18,8 @@ class recommended_page extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    popup(context, "ปลากะพงนึ่งมะนาว\n140 Kcal",
-                        'images/fish.png', 140);
+                    popup(context, "ปลากะพงนึ่งมะนาว", 'images/fish.png', 140,
+                        '\n140 Kcal');
                   },
                   child: Card(
                     margin: const EdgeInsets.only(
@@ -87,11 +87,8 @@ class recommended_page extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    popup(
-                        context,
-                        "สลัดธัญพืชรวมน้ำสลัดสตรอเบอร์รี่โยเกิร์ต\n214 Kcal",
-                        'images/fruitsalad.png',
-                        214);
+                    popup(context, "สลัดผลไม้", 'images/fruitsalad.png', 214,
+                        '\n214 Kcal');
                   },
                   child: Card(
                     margin: const EdgeInsets.only(
@@ -134,7 +131,7 @@ class recommended_page extends StatelessWidget {
                                 children: [
                                   Row(children: [
                                     Text(
-                                      "สลัดธัญพืชรวมน้ำสลัด\nสตรอเบอร์รี่โยเกิร์ต",
+                                      "สลัดผลไม้",
                                       style: TextStyle(
                                         fontSize: sizes.smallfont,
                                       ),
@@ -160,8 +157,8 @@ class recommended_page extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    popup(context, "เต้าหู้ทรงเครื่อง\n920 Kcal",
-                        'images/tofu.png', 920);
+                    popup(context, "เต้าหู้ทรงเครื่อง", 'images/tofu.png', 920,
+                        '\n920 Kcal');
                   },
                   child: Card(
                     margin: const EdgeInsets.only(
@@ -229,8 +226,8 @@ class recommended_page extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    popup(
-                        context, "สลัดผัก\n240 Kcal", 'images/salad.png', 240);
+                    popup(context, "สลัดผัก", 'images/salad.png', 240,
+                        '\n240 Kcal');
                   },
                   child: Card(
                     margin: const EdgeInsets.only(
